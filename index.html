@@ -12,16 +12,19 @@
 </head>
 <body>
 
+<!-- ===== SCROLL PROGRESS BAR ===== -->
+<div class="scrollbar" id="scrollbar" aria-hidden="true"></div>
+
 <!-- ===== NAV ===== -->
 <header class="nav" id="nav">
   <a href="#top" class="nav__logo">
     <span class="nav__logo-comic">COMIC</span><span class="nav__logo-relief">RELIEF</span>
   </a>
   <nav class="nav__links" id="navLinks">
-    <a href="#stock">What We Stock</a>
-    <a href="#gallery">The Shop</a>
-    <a href="#about">About</a>
-    <a href="#visit">Visit</a>
+    <a href="#stock" data-spy-link="stock">What We Stock</a>
+    <a href="#gallery" data-spy-link="gallery">The Shop</a>
+    <a href="#about" data-spy-link="about">About</a>
+    <a href="#visit" data-spy-link="visit">Visit</a>
     <a class="nav__cta" href="tel:+15123531138">(512) 353-1138</a>
   </nav>
   <button class="nav__burger" id="navBurger" aria-label="Menu">
@@ -29,8 +32,17 @@
   </button>
 </header>
 
+<!-- ===== SECTION DOT-NAV (scroll-spy) ===== -->
+<nav class="dotnav" id="dotnav" aria-label="Jump to section">
+  <a href="#top"     class="dotnav__dot is-active" data-spy-dot="top"     aria-label="Home"><b></b><span class="dotnav__label">Home</span></a>
+  <a href="#stock"   class="dotnav__dot"           data-spy-dot="stock"   aria-label="What We Stock"><b></b><span class="dotnav__label">Stock</span></a>
+  <a href="#gallery" class="dotnav__dot"           data-spy-dot="gallery" aria-label="The Shop"><b></b><span class="dotnav__label">The Shop</span></a>
+  <a href="#about"   class="dotnav__dot"           data-spy-dot="about"   aria-label="About"><b></b><span class="dotnav__label">About</span></a>
+  <a href="#visit"   class="dotnav__dot"           data-spy-dot="visit"   aria-label="Visit"><b></b><span class="dotnav__label">Visit</span></a>
+</nav>
+
 <!-- ===== HERO ===== -->
-<section class="hero" id="top">
+<section class="hero" id="top" data-spy="top">
   <div class="hero__halftone"></div>
   <div class="hero__rays"></div>
 
@@ -38,8 +50,8 @@
     <span class="burst__text">SAN&nbsp;MARCOS<br>TEXAS</span>
   </span>
 
-  <img src="images/cutouts/vader.png" alt="Vintage Darth Vader action figure" class="hero__fig hero__fig--left" />
-  <img src="images/cutouts/luke.png"  alt="Vintage Luke Skywalker action figure" class="hero__fig hero__fig--right" />
+  <img src="images/cutouts/vader.png" alt="Vintage Darth Vader action figure" class="hero__fig hero__fig--left" data-parallax="0.08" />
+  <img src="images/cutouts/luke.png"  alt="Vintage Luke Skywalker action figure" class="hero__fig hero__fig--right" data-parallax="0.08" />
 
   <div class="hero__inner">
     <div class="speech">Your friendly neighborhood comic shop!</div>
@@ -58,9 +70,11 @@
 </section>
 
 <!-- ===== STOCK ===== -->
-<section class="section section--light" id="stock">
+<section class="section section--light torn" id="stock" data-spy="stock">
+  <img src="images/cutouts/vader.png" alt="" aria-hidden="true" class="peek peek--vader-stock" data-parallax="0.05" />
+
   <div class="section__head reveal">
-    <span class="kicker">Under one roof</span>
+    <span class="kicker"><b class="issue">Issue #01</b> Under one roof</span>
     <h2 class="head">What We Stock</h2>
     <p class="lede">If it's geeky, there's a good chance it's on a shelf here. Here's a taste of what you'll dig through.</p>
   </div>
@@ -97,34 +111,38 @@
 </section>
 
 <!-- ===== GALLERY ===== -->
-<section class="section section--dark" id="gallery">
+<section class="section section--dark torn" id="gallery" data-spy="gallery">
+  <img src="images/cutouts/luke.png" alt="" aria-hidden="true" class="peek peek--luke-gallery" data-parallax="0.06" />
+
   <div class="section__head reveal">
-    <span class="kicker kicker--light">Step inside</span>
+    <span class="kicker kicker--light"><b class="issue">Issue #02</b> Step inside</span>
     <h2 class="head head--light">The Shop</h2>
-    <p class="lede lede--light">A real, packed-to-the-rafters comic store. No two visits are the same — here's a peek.</p>
+    <p class="lede lede--light">A real, packed-to-the-rafters comic store. No two visits are the same — tap a panel to zoom in.</p>
   </div>
 
-  <div class="gallery">
-    <figure class="gallery__item gallery__item--wide reveal"><img src="images/photo-30.jpg" alt="Wall of comics and figures inside Comic Relief" loading="lazy" /></figure>
-    <figure class="gallery__item reveal"><img src="images/photo-35.jpg" alt="Vintage Star Wars figures up close" loading="lazy" /></figure>
-    <figure class="gallery__item reveal"><img src="images/photo-45.jpg" alt="Sports cards and memorabilia shelves" loading="lazy" /></figure>
-    <figure class="gallery__item reveal"><img src="images/photo-20.jpg" alt="Comic display table" loading="lazy" /></figure>
-    <figure class="gallery__item gallery__item--tall reveal"><img src="images/photo-60.jpg" alt="Media and back-issue aisle" loading="lazy" /></figure>
-    <figure class="gallery__item reveal"><img src="images/photo-25.jpg" alt="Funko Pop collection" loading="lazy" /></figure>
-    <figure class="gallery__item reveal"><img src="images/photo-10.jpg" alt="Boxed Star Wars action figures" loading="lazy" /></figure>
-    <figure class="gallery__item gallery__item--wide reveal"><img src="images/photo-40.jpg" alt="Long boxes of comics" loading="lazy" /></figure>
+  <div class="gallery" id="gallery-grid">
+    <figure class="gallery__item gallery__item--wide reveal" data-sfx="POW!"><img src="images/photo-30.jpg" alt="Wall of comics and figures inside Comic Relief" loading="lazy" /></figure>
+    <figure class="gallery__item reveal" data-sfx="ZAP!"><img src="images/photo-35.jpg" alt="Vintage Star Wars figures up close" loading="lazy" /></figure>
+    <figure class="gallery__item reveal" data-sfx="BOOM!"><img src="images/photo-45.jpg" alt="Sports cards and memorabilia shelves" loading="lazy" /></figure>
+    <figure class="gallery__item reveal" data-sfx="WHAM!"><img src="images/photo-20.jpg" alt="Comic display table" loading="lazy" /></figure>
+    <figure class="gallery__item gallery__item--tall reveal" data-sfx="ZOWIE!"><img src="images/photo-60.jpg" alt="Media and back-issue aisle" loading="lazy" /></figure>
+    <figure class="gallery__item reveal" data-sfx="BAM!"><img src="images/photo-25.jpg" alt="Funko Pop collection" loading="lazy" /></figure>
+    <figure class="gallery__item reveal" data-sfx="KAPOW!"><img src="images/photo-10.jpg" alt="Boxed Star Wars action figures" loading="lazy" /></figure>
+    <figure class="gallery__item gallery__item--wide reveal" data-sfx="SNIKT!"><img src="images/photo-40.jpg" alt="Long boxes of comics" loading="lazy" /></figure>
   </div>
 </section>
 
 <!-- ===== ABOUT ===== -->
-<section class="section section--light about" id="about">
+<section class="section section--light torn about" id="about" data-spy="about">
+  <img src="images/cutouts/vader.png" alt="" aria-hidden="true" class="peek peek--vader-about" data-parallax="0.04" />
+
   <div class="about__grid">
     <div class="about__photo reveal">
       <img src="images/photo-cover.jpg" alt="Comic Relief storefront in San Marcos, Texas" loading="lazy" />
       <span class="sticker">EST. in San Marcos</span>
     </div>
     <div class="about__text reveal">
-      <span class="kicker">Who we are</span>
+      <span class="kicker"><b class="issue">Issue #03</b> Who we are</span>
       <h2 class="head">A Local Legend on Aquarena Springs</h2>
       <p>Comic Relief is San Marcos's home for <strong>cards, comics and toys</strong> — the kind of shop where you can lose an afternoon flipping through long boxes and walk out with a key issue, a graded rookie card, and a vintage figure you forgot you needed.</p>
       <p>Whether you're a lifelong collector, a Magic player hunting singles, or just discovering your first pull list, you'll find friendly faces and shelves stacked floor-to-ceiling with the good stuff.</p>
@@ -139,9 +157,11 @@
 </section>
 
 <!-- ===== VISIT ===== -->
-<section class="section section--yellow visit" id="visit">
+<section class="section section--yellow torn visit" id="visit" data-spy="visit">
+  <img src="images/cutouts/luke.png" alt="" aria-hidden="true" class="peek peek--luke-visit" data-parallax="0.05" />
+
   <div class="section__head reveal">
-    <span class="kicker">Come say hi</span>
+    <span class="kicker"><b class="issue">Issue #04</b> Come say hi</span>
     <h2 class="head">Visit the Shop</h2>
   </div>
 
@@ -175,12 +195,22 @@
 </section>
 
 <!-- ===== FOOTER ===== -->
-<footer class="footer">
+<footer class="footer torn">
   <div class="footer__logo"><span class="nav__logo-comic">COMIC</span><span class="nav__logo-relief">RELIEF</span></div>
   <p>Cards · Comics · Toys — San Marcos, TX</p>
   <p class="footer__small">1330 Aquarena Springs Dr #105 · (512) 353-1138</p>
   <p class="footer__credit">Fan-made shop website mock-up. Photos from the store's public Google Maps listing.</p>
 </footer>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Photo viewer">
+  <button class="lightbox__close" id="lightboxClose" aria-label="Close">✕</button>
+  <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Previous">‹</button>
+  <figure class="lightbox__frame">
+    <img id="lightboxImg" src="" alt="" />
+  </figure>
+  <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Next">›</button>
+</div>
 
 <script src="script.js"></script>
 </body>
